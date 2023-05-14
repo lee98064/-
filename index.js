@@ -1,4 +1,16 @@
+function reSize() {
+  // 0.075
+  let paperWidth = $("#paper-bg").width();
+  $("#pen").width(paperWidth * 0.075);
+}
+
 $(function () {
+  reSize();
+
+  $(window).on("resize", function () {
+    reSize();
+  });
+
   $(".pen-option input").on("change", function () {
     $(".pen-option input").each(function (index, element) {
       if ($(element).is(":checked")) {
@@ -28,6 +40,7 @@ $(function () {
         "-moz-transform": rotateCSS,
         "-webkit-transform": rotateCSS,
       });
+      $("#angle").text(degree + 80);
     },
   });
 });

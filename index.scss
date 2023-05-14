@@ -1,7 +1,23 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .option-area {
   display: flex;
   flex-wrap: wrap;
   margin-bottom: 5px;
+}
+
+.top {
+  align-self: flex-start;
 }
 
 .container {
@@ -25,7 +41,7 @@
   //   }
 
   .bg-area {
-    margin-top: 250px;
+    margin-top: 230px;
     position: relative;
     #paper-bg {
       position: relative;
@@ -33,7 +49,7 @@
     }
 
     #protractor-bg {
-      width: 70%;
+      width: 75%;
       top: 36.5%;
       left: 50.5%;
       transform: translate(-50%, -50%);
@@ -41,15 +57,22 @@
     }
 
     #pen-container {
-      position: absolute;
+      top: -30.5%;
       left: 46.5%;
-      top: -31%;
+      position: absolute;
       display: block;
       z-index: 10;
-      transform: rotate(0deg);
       #pen {
-        max-width: 36px;
+        width: 36px;
+        display: block;
+        margin: auto;
       }
     }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    overflow: hidden;
   }
 }
