@@ -1,0 +1,36 @@
+.option-area {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 5px;
+}
+
+.container {
+  position: relative;
+  max-width: 476px;
+}
+.container .bg-area {
+  margin-top: 250px;
+  position: relative;
+}
+.container .bg-area #paper-bg {
+  position: relative;
+  width: 100%;
+}
+.container .bg-area #protractor-bg {
+  width: 70%;
+  top: 36.5%;
+  left: 50.5%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+}
+.container .bg-area #pen-container {
+  position: absolute;
+  left: 46.5%;
+  top: -31%;
+  display: block;
+  z-index: 10;
+  transform: rotate(0deg);
+}
+.container .bg-area #pen-container #pen {
+  max-width: 36px;
+}/*# sourceMappingURL=index.css.map */

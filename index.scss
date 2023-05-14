@@ -1,0 +1,55 @@
+.option-area {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 5px;
+}
+
+.container {
+  position: relative;
+  max-width: 476px;
+
+  //   #paper-bg {
+  //     width: 100%;
+  //   }
+
+  //   img {
+  //     position: absolute;
+  //     display: block;
+  //     margin: auto;
+  //   }
+
+  //   #pen {
+  //     left: 50%;
+  //     transform: translateX(-50%);
+  //     z-index: 1;
+  //   }
+
+  .bg-area {
+    margin-top: 250px;
+    position: relative;
+    #paper-bg {
+      position: relative;
+      width: 100%;
+    }
+
+    #protractor-bg {
+      width: 70%;
+      top: 36.5%;
+      left: 50.5%;
+      transform: translate(-50%, -50%);
+      position: absolute;
+    }
+
+    #pen-container {
+      position: absolute;
+      left: 46.5%;
+      top: -31%;
+      display: block;
+      z-index: 10;
+      transform: rotate(0deg);
+      #pen {
+        max-width: 36px;
+      }
+    }
+  }
+}
