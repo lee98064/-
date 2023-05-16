@@ -2,6 +2,35 @@ function reSize() {
   // 0.075
   let paperWidth = $("#paper-bg").width();
   $("#pen").width(paperWidth * 0.075);
+  // $("#line").width(paperWidth * 0.075);
+  let penHeight = $("#pen").height();
+  $(".container").css("paddingTop", `${penHeight / 4 - 10}px`);
+}
+
+function Snell(
+  incidentAngle,
+  incidentMediumRefractionIndex = 1.0,
+  refractiveMediumRefractionIndex = 1.5
+) {
+  // 定義入射角度和介質折射率
+  // const incidentAngle = 30; // 入射角（單位：度）
+  // const incidentMediumRefractionIndex = 1.0; // 入射介質折射率
+
+  // const refractiveMediumRefractionIndex = 1.5; // 折射介質折射率
+
+  // 將角度轉換為弧度
+  const incidentAngleRadians = incidentAngle * (Math.PI / 180);
+
+  // 使用司乃爾定律計算折射角度
+  const refractedAngleRadians = Math.asin(
+    (incidentMediumRefractionIndex / refractiveMediumRefractionIndex) *
+      Math.sin(incidentAngleRadians)
+  );
+
+  // 將折射角度轉換回角度
+  const refractedAngle = refractedAngleRadians * (180 / Math.PI);
+  console.log(refractedAngle);
+  return refractedAngle;
 }
 
 $(function () {
@@ -35,12 +64,24 @@ $(function () {
         radians = Math.atan2(mouse_x - center_x, mouse_y - center_y),
         degree = Math.round(radians * (180 / Math.PI) * -1 + 100);
 
-      var rotateCSS = "rotate(" + (degree + 80) + "deg)";
+      degree += 80;
+      if (
+        !((degree >= 270 && degree <= 360) || (degree >= 0 && degree <= 91))
+      ) {
+        return;
+      }
+      var rotateCSS = `rotate(${degree}deg)`;
       $("#pen-container").css({
         "-moz-transform": rotateCSS,
         "-webkit-transform": rotateCSS,
       });
-      $("#angle").text(degree + 80);
+      var refractedAngle = Snell(degree);
+      rotateCSS = `rotate(${refractedAngle}deg)`;
+      $("#line-container").css({
+        "-moz-transform": rotateCSS,
+        "-webkit-transform": rotateCSS,
+      });
+      $("#angle").text(degree);
     },
   });
 });

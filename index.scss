@@ -23,25 +23,9 @@ body {
 .container {
   position: relative;
   max-width: 476px;
-
-  //   #paper-bg {
-  //     width: 100%;
-  //   }
-
-  //   img {
-  //     position: absolute;
-  //     display: block;
-  //     margin: auto;
-  //   }
-
-  //   #pen {
-  //     left: 50%;
-  //     transform: translateX(-50%);
-  //     z-index: 1;
-  //   }
+  padding-top: 230px;
 
   .bg-area {
-    margin-top: 230px;
     position: relative;
     #paper-bg {
       position: relative;
@@ -64,6 +48,22 @@ body {
       z-index: 10;
       #pen {
         width: 36px;
+        display: block;
+        margin: auto;
+      }
+    }
+
+    #line-container {
+      position: absolute;
+      display: block;
+      width: 100%;
+      left: 1px;
+      top: 36%;
+      z-index: 2;
+      max-height: 400px;
+      overflow: hidden;
+      transform-origin: 50% 0%;
+      #line {
         display: block;
         margin: auto;
       }

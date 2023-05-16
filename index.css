@@ -23,9 +23,9 @@ body {
 .container {
   position: relative;
   max-width: 476px;
+  padding-top: 230px;
 }
 .container .bg-area {
-  margin-top: 230px;
   position: relative;
 }
 .container .bg-area #paper-bg {
@@ -48,6 +48,21 @@ body {
 }
 .container .bg-area #pen-container #pen {
   width: 36px;
+  display: block;
+  margin: auto;
+}
+.container .bg-area #line-container {
+  position: absolute;
+  display: block;
+  width: 100%;
+  left: 1px;
+  top: 36%;
+  z-index: 2;
+  max-height: 400px;
+  overflow: hidden;
+  transform-origin: 50% 0%;
+}
+.container .bg-area #line-container #line {
   display: block;
   margin: auto;
 }
