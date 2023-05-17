@@ -59,6 +59,10 @@ $(function () {
     $(".pen-option input").each(function (index, element) {
       if ($(element).is(":checked")) {
         $("#pen").attr("src", `./images/${$(element).val()}.png`);
+        $("#line").attr(
+          "src",
+          `./images/${$(element).val().replace("pen", "line")}.png`
+        );
       }
     });
   });
