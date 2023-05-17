@@ -20,6 +20,13 @@ body {
   align-self: flex-start;
 }
 
+.result {
+  h3 {
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+}
+
 .container {
   position: relative;
   max-width: 476px;
@@ -41,11 +48,15 @@ body {
     }
 
     #pen-container {
-      top: -30.5%;
-      left: 46.5%;
+      width: 100%;
+      top: -10%;
+      left: 2.5px;
       position: absolute;
       display: block;
       z-index: 10;
+      transform-origin: bottom center;
+      max-height: 300px;
+      overflow: hidden;
       #pen {
         width: 36px;
         display: block;
@@ -57,7 +68,7 @@ body {
       position: absolute;
       display: block;
       width: 100%;
-      left: 1px;
+      left: 2.5px;
       top: 36%;
       z-index: 2;
       max-height: 400px;
