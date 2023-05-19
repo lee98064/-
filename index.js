@@ -5,6 +5,18 @@ let roundDecimal = function (val, precision) {
   );
 };
 
+function convertAngleInRange(degree) {
+  if (degree > 180) {
+    degree -= 360;
+  }
+
+  if (degree < 0) {
+    degree *= -1;
+  }
+
+  return degree;
+}
+
 function reSize() {
   // 0.075
   let paperWidth = $("#paper-bg").width();
@@ -16,7 +28,7 @@ function reSize() {
     height: `${parseInt(paperHeight * 0.47)}px`,
   });
   $("#line").css({
-    width: `${paperWidth * 0.008}px`,
+    width: `${paperWidth * 0.007}px`,
   });
   let penHeight = $("#pen").height();
   $(".container").css("paddingTop", `${penHeight / 4 - 10}px`);
@@ -185,8 +197,10 @@ function handleMove(event) {
     var refractedAngle = Snell(degree, 1.0, getLiquidRefractiveIndex());
     rotateCSS = "rotate(" + refractedAngle + "deg)";
     lineContainer.style.transform = rotateCSS;
-    angleText.textContent = degree;
-    refractedAngleText.textContent = roundDecimal(refractedAngle, 2);
+    angleText.textContent = convertAngleInRange(degree);
+    refractedAngleText.textContent = convertAngleInRange(
+      roundDecimal(refractedAngle, 2)
+    );
   }
 }
 
