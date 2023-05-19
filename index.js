@@ -22,10 +22,64 @@ function reSize() {
   $(".container").css("paddingTop", `${penHeight / 4 - 10}px`);
 }
 
+function getLiquidRefractiveIndex() {
+  if (!$("#water-bowl").is(":checked")) {
+    return 1.0;
+  }
+
+  let liquidType = $("input[name=liquid]:checked").val();
+  switch (liquidType) {
+    case "liquid-water":
+      refractiveIndex = 1.5;
+      break;
+    case "liquid-salt-water":
+      refractiveIndex = 1.333;
+      break;
+    case "liquid-alcohol":
+      refractiveIndex = 1.36;
+      break;
+    case "liquid-glycerin":
+      refractiveIndex = 1.47;
+      break;
+    default:
+      refractiveIndex = 1.0;
+      break;
+  }
+  return refractiveIndex;
+}
+
+function updateLineContainer() {
+  let penContainerAngle = $("#pen-container").data("angle");
+  var refractedAngle = Snell(
+    penContainerAngle,
+    1.0,
+    getLiquidRefractiveIndex()
+  );
+  rotateCSS = "rotate(" + refractedAngle + "deg)";
+  $("#line-container").css("transform", rotateCSS);
+  $("#refractedAngle").text(roundDecimal(refractedAngle, 2));
+}
+
+// function refractiveMediumRefractionIndex(liquid) {
+//   let refractiveIndex = 0;
+//   switch (liquid) {
+//     case "air":
+//       refractiveIndex = 1.0;
+//       break;
+//     case "glass":
+//       refractiveIndex = 1.5;
+//       break;
+//     default:
+//       refractiveIndex = 0;
+//       break;
+//   }
+//   return refractiveIndex;
+// }
+
 function Snell(
   incidentAngle,
   incidentMediumRefractionIndex = 1.0,
-  refractiveMediumRefractionIndex = 1.5
+  refractiveMediumRefractionIndex = 1.0
 ) {
   // 定義入射角度和介質折射率
   // const incidentAngle = 30; // 入射角（單位：度）
@@ -44,7 +98,6 @@ function Snell(
 
   // 將折射角度轉換回角度
   const refractedAngle = refractedAngleRadians * (180 / Math.PI);
-
   return refractedAngle;
 }
 
@@ -65,6 +118,27 @@ $(function () {
         );
       }
     });
+  });
+
+  $("#water-bowl").on("change", function () {
+    $("#water-bowl-img").css(
+      "display",
+      $(this).is(":checked") ? "block" : "none"
+    );
+    $(".liquid-option input").prop("disabled", !$(this).is(":checked"));
+    updateLineContainer();
+  });
+
+  $("#paper, #protractor").on("change", function () {
+    if ($(this).is(":checked")) {
+      $(`#${$(this).val()}-bg`).css("opacity", 1);
+    } else {
+      $(`#${$(this).val()}-bg`).css("opacity", 0);
+    }
+  });
+
+  $(".liquid-option input").on("change", function () {
+    updateLineContainer();
   });
 });
 
@@ -106,8 +180,9 @@ function handleMove(event) {
     }
     var rotateCSS = "rotate(" + degree + "deg)";
     penContainer.style.transform = rotateCSS;
+    penContainer.setAttribute("data-angle", degree);
     lineContainer.style.transform = rotateCSS;
-    var refractedAngle = Snell(degree);
+    var refractedAngle = Snell(degree, 1.0, getLiquidRefractiveIndex());
     rotateCSS = "rotate(" + refractedAngle + "deg)";
     lineContainer.style.transform = rotateCSS;
     angleText.textContent = degree;

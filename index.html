@@ -32,16 +32,64 @@
       </div>
       <div class="option-area tools-option">
         <div class="checkbox-group">
-          <input type="checkbox" id="water-bowl" name="tools" />
+          <input
+            type="checkbox"
+            id="water-bowl"
+            name="tools"
+            value="water-bowl"
+            checked
+          />
           <label for="water-bowl">半圓形水盤</label>
         </div>
         <div class="checkbox-group">
-          <input type="checkbox" id="paper" name="tools" />
+          <input
+            type="checkbox"
+            id="paper"
+            name="tools"
+            value="paper"
+            checked
+          />
           <label for="paper">方格紙</label>
         </div>
         <div class="checkbox-group">
-          <input type="checkbox" id="protractor" name="tools" />
+          <input
+            type="checkbox"
+            id="protractor"
+            name="tools"
+            value="protractor"
+            checked
+          />
           <label for="protractor">量角器(解析度5度)</label>
+        </div>
+      </div>
+      <div class="option-area liquid-option">
+        <div class="radio-group">
+          <input
+            type="radio"
+            id="liquid-water"
+            name="liquid"
+            value="liquid-water"
+            checked
+          />
+          <label for="liquid-water">水</label>
+        </div>
+        <div class="radio-group">
+          <input
+            type="radio"
+            id="liquid-salt-water"
+            name="liquid"
+            value="liquid-salt-water"
+          />
+          <label for="liquid-salt-water">食鹽水</label>
+        </div>
+        <div class="radio-group">
+          <input
+            type="radio"
+            id="liquid-alcohol"
+            name="liquid"
+            value="liquid-alcohol"
+          />
+          <label for="liquid-alcohol">酒精</label>
         </div>
       </div>
     </div>
@@ -53,7 +101,7 @@
     <div class="container">
       <!-- <img src="./images/pen-head.png" alt="" id="pen-head" /> -->
       <div class="bg-area">
-        <div id="pen-container">
+        <div id="pen-container" data-angle="0">
           <img src="./images/pen-blue.png" alt="" id="pen" />
         </div>
         <div id="line-container">
@@ -61,6 +109,9 @@
         </div>
         <img src="./images/paper.jpg" alt="" id="paper-bg" />
         <img src="./images/protractor.png" alt="" id="protractor-bg" />
+        <div id="tools-container">
+          <img src="./images/water-bowl.png" alt="" id="water-bowl-img" />
+        </div>
       </div>
     </div>
 

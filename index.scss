@@ -79,6 +79,18 @@ body {
         margin: auto;
       }
     }
+
+    #tools-container {
+      width: 100%;
+      position: absolute;
+      margin: auto;
+      top: 36.5%;
+      #water-bowl-img {
+        display: block;
+        margin: auto;
+        width: 60%;
+      }
+    }
   }
 }
 
