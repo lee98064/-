@@ -42,7 +42,7 @@ function getLiquidRefractiveIndex() {
   let liquidType = $("input[name=liquid]:checked").val();
   switch (liquidType) {
     case "liquid-water":
-      refractiveIndex = 1.5;
+      refractiveIndex = 1.33;
       break;
     case "liquid-salt-water":
       refractiveIndex = 1.333;
